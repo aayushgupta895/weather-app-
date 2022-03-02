@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/untitled"
+    tools:context=".MainActivity"
+    android:fillViewport="true">
+
+      <!--Any child View here, TabLayout for example. This View will NOT be blurred -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="Search for city"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="normal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_views"
+            android:drawableRight="@drawable/search"
+            android:drawablePadding="8dp"
+            android:hint="Search here"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_view" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:onClick="button"
+            app:layout_constraintLeft_toLeftOf="@id/editText"
+            app:layout_constraintRight_toRightOf="@id/editText"
+            app:layout_constraintTop_toBottomOf="@id/title_view" />
+
+        <TextView
+            android:id="@+id/city_info"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_views"
+            android:gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:text="Delhi"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/editText" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/cloud"
+            app:layout_constraintBottom_toBottomOf="@id/city_info"
+            app:layout_constraintLeft_toLeftOf="@id/city_info"
+            app:layout_constraintRight_toRightOf="@id/city_info"
+            app:layout_constraintTop_toTopOf="@id/city_info" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5sp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintBottom_toBottomOf="@id/city_info"
+            app:layout_constraintLeft_toLeftOf="@id/city_info"
+            app:layout_constraintRight_toRightOf="@id/city_info">
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:gravity="bottom|end"
+                android:text="13"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"
+                android:gravity="start|top"
+                android:text="o"
+                android:textColor="#F8CB07"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1.8"
+                android:gravity="center|center_vertical"
+                android:paddingLeft="5sp"
+                android:text="Thunder"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/forecast"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_views"
+            android:gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:text="Tommorrow"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/guideline2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/cloud"
+            app:layout_constraintBottom_toBottomOf="@id/forecast"
+            app:layout_constraintLeft_toLeftOf="@id/forecast"
+            app:layout_constraintRight_toRightOf="@id/forecast"
+            app:layout_constraintTop_toTopOf="@id/forecast" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center|center_vertical"
+            android:text="13/36"
+            android:orientation="horizontal"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:weightSum="3"
+            app:layout_constraintBottom_toBottomOf="@id/forecast"
+            app:layout_constraintLeft_toLeftOf="@id/forecast"
+            app:layout_constraintRight_toRightOf="@id/forecast" >
+            <TextView
+                android:id="@+id/min_temp"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="end"
+                android:layout_weight="1.5"
+                android:text="13/"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/max_temp"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="start"
+                android:layout_weight="0.7"
+                android:text="36"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="o"
+                android:gravity="start|top"
+                android:textColor="#F8CB07"
+                android:layout_weight=".8"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/feelLike"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="160dp"
+            android:text="Feel like 12 "
+            android:textStyle="normal"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/bg_views"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast" />
+
+        <TextView
+            android:id="@+id/big_square"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/bg_views"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/feelLike" />
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_views"
+            app:layout_constraintLeft_toLeftOf="@+id/big_square"
+            app:layout_constraintRight_toRightOf="@+id/big_square"
+            app:layout_constraintTop_toTopOf="@+id/big_square"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/big_square" />
+   <LinearLayout
+       android:id="@+id/big_square2"
+       android:layout_width="0dp"
+       android:layout_height="0dp"
+       android:orientation="horizontal"
+       android:weightSum="2"
+       app:layout_constraintLeft_toLeftOf="@id/big_square"
+       app:layout_constraintRight_toRightOf="@id/big_square"
+       app:layout_constraintTop_toTopOf="@+id/big_square"
+       app:layout_constraintBottom_toBottomOf="@id/big_square">
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:weightSum="4"
+           android:orientation="vertical"
+           android:layout_weight="1">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="Precipitation"
+               android:textColor="@color/white"
+               android:gravity="center_horizontal|bottom"
+               android:textSize="18sp"
+               android:layout_weight="1"/>
+           <TextView
+               android:id="@+id/precipitation"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="30%"
+               android:textColor="@color/white"
+               android:gravity="center_vertical|center_horizontal"
+               android:textStyle="bold"
+               android:textSize="20sp"
+               android:layout_weight="1"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="Humidity"
+               android:textColor="@color/white"
+               android:gravity="bottom|center_horizontal"
+               android:textSize="18sp"
+               android:layout_weight="1"/>
+           <TextView
+               android:id="@+id/humidity"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="0%"
+               android:textColor="@color/white"
+               android:gravity="center_vertical|center_horizontal"
+               android:textStyle="bold"
+               android:textSize="20sp"
+               android:layout_weight="1"/>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:weightSum="4"
+           android:orientation="vertical"
+           android:layout_weight="1">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="Wind"
+               android:textColor="@color/white"
+               android:gravity="bottom|center_horizontal"
+               android:textSize="18sp"
+               android:layout_weight="1"/>
+           <TextView
+               android:id="@+id/wind"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="8 km/h"
+               android:textColor="@color/white"
+               android:gravity="center_vertical|center_horizontal"
+               android:textStyle="bold"
+               android:textSize="20sp"
+               android:layout_weight="1"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="Pressure"
+               android:textColor="@color/white"
+               android:gravity="bottom|center_horizontal"
+               android:textSize="18sp"
+               android:layout_weight="1"/>
+           <TextView
+               android:id="@+id/pressure"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:text="840 Pha"
+               android:textColor="@color/white"
+               android:gravity="center_vertical|center_horizontal"
+               android:textStyle="bold"
+               android:textSize="20sp"
+               android:layout_weight="1"/>
+       </LinearLayout>
+   </LinearLayout>
+<!--   <androidx.core.widget.NestedScrollView-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="0dp"-->
+<!--       android:layout_marginTop="10dp"-->
+<!--       app:layout_constraintLeft_toLeftOf="parent"-->
+<!--       app:layout_constraintRight_toRightOf="parent"-->
+<!--       app:layout_constraintBottom_toBottomOf="parent"-->
+<!--       app:layout_constraintTop_toBottomOf="@id/big_square2">-->
+<!--       -->
+<!--   </androidx.core.widget.NestedScrollView>-->
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:descendantFocusability="beforeDescendants"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_marginTop="30dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:orientation="horizontal"
+    app:layout_constraintRight_toRightOf="parent"
+    tools:listitem="@layout/list_item"
+    app:layout_constraintTop_toBottomOf="@id/big_square2">
+
+</androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+           app:layout_constraintGuide_percent=".5"
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
