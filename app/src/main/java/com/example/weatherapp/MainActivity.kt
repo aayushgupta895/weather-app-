@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
@@ -22,9 +20,9 @@ import kotlin.math.roundToInt
 class MainActivity : AppCompatActivity(){
 //    var blurLayout: BlurLayout? = null
 //     lateinit var blurView:BlurView
-
-     public lateinit var mAdaper : RvAdapter
-    public   lateinit var editText: EditText
+    private lateinit var progressBar : ProgressBar
+    lateinit var mAdaper : RvAdapter
+    lateinit var editText: EditText
     private lateinit var cityName : TextView
     lateinit var temperature: TextView
     lateinit var condition: TextView
@@ -38,14 +36,16 @@ class MainActivity : AppCompatActivity(){
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 //        idBinding()
+        progressBar = findViewById(R.id.progress)
+        progressBar.visibility = ProgressBar.VISIBLE
         cityName = findViewById(R.id.city_info)
         editText = findViewById(R.id.editText)
-
-//        cityName.ellipsize = TextUtils.TruncateAt.MARQUEE
-//        cityName.isSelected = true;
+        cityName.ellipsize = TextUtils.TruncateAt.MARQUEE
+        cityName.isSelected = true;
         temperature = findViewById(R.id.temperature)
         condition = findViewById(R.id.condition)
         condition.ellipsize = TextUtils.TruncateAt.MARQUEE
@@ -67,12 +67,9 @@ class MainActivity : AppCompatActivity(){
 
 
      fun button(v: View){
-        Log.d("button","here button")
-         val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
-         recyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
-         val adaper = RvAdapter(this)
-
-          fetchData(editText.text.toString())
+         progressBar.visibility = ProgressBar.VISIBLE
+         Log.d("editText",editText.text.toString())
+        fetchData(editText.text.toString())
  }
 
    fun fetchData(s : String){
@@ -135,6 +132,7 @@ class MainActivity : AppCompatActivity(){
                dataAddition(weatherData)
            },
            {
+               progressBar.visibility = ProgressBar.GONE
                Toast.makeText(this," please choose the valid location", Toast.LENGTH_LONG).show()
 //                Log.d("volleyError",it.localizedMessage)
 
@@ -151,6 +149,7 @@ class MainActivity : AppCompatActivity(){
 
 
     fun dataAddition(WD : WeatherData){
+        progressBar.visibility = ProgressBar.GONE
         cityName.text = WD.cityName
         temperature.text = WD.temperature
         condition.text =  WD.condition
