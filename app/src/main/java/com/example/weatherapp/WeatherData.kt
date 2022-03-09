@@ -11,6 +11,8 @@ package com.example.weatherapp
     val wind : String,
     val pressure : String,
     val humidity : String,
+    val isDay : String,
+
         )
   data class hour(
      val isDay :String,

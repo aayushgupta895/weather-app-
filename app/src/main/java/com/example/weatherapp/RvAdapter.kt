@@ -26,35 +26,12 @@ class RvAdapter(private val context:Context) : RecyclerView.Adapter<weatherViewH
         else holder.time.text = (position-12).toString()+" PM"
 //        holder.image.setImageDrawable(R.drawable.moon)
         val drawable : Int = drawable(currentItem.text_condition,currentItem.isDay)
-            if(currentItem.text_condition == "Partly cloudy"&&currentItem.isDay=="1")
-                holder.image.setImageResource(R.drawable.sunny_partly_cloudy)
-        else if (currentItem.text_condition == "Partly cloudy"&&currentItem.isDay=="0")
-                holder.image.setImageResource(R.drawable.moon_partly_cloudy)
-        else
+
             holder.image.setImageResource(drawable)
 
     }
 
-    private fun drawable(textCondition: String, day: String): Int {
-        when(textCondition){
-            "Rain" -> return R.drawable.rain
-            "Sunny" -> return R.drawable.sunny
-            "Cloudy" -> return R.drawable.cloudy
-            "Clear" -> return R.drawable.moon
-            "Overcast" -> return R.drawable.cloudy
-            "Moderate snow" -> return R.drawable.snow
-            "Heavy snow" -> return R.drawable.snow
-            "Light snow" -> return R.drawable.snow
-            "Fog" -> return R.drawable.fog
-            "Light rain shower" -> return R.drawable.light_rain
-            "Patchy rain shower" -> return R.drawable.light_rain
-            "Moderate or heavy rain shower" -> return R.drawable.rain
-            "Thunder" -> return R.drawable.rain
-            "Torrential rain shower"-> return  R.drawable.rain
 
-        }
-        return R.drawable.cloudy
-    }
 
     override fun getItemCount(): Int {
         return items.size;
@@ -70,4 +47,34 @@ class RvAdapter(private val context:Context) : RecyclerView.Adapter<weatherViewH
     val image : ImageView = itemView.findViewById(R.id.sun)
        val temp : TextView = itemView.findViewById(R.id.temp)
        val time : TextView = itemView.findViewById(R.id.time)
+//       val current_weather : ImageView = itemView.findViewById(R.id.current_weather)
    }
+public fun drawable(textCondition: String, day: String): Int {
+    if(day=="1"){
+        when(textCondition){
+            "Clear" -> return R.drawable.sunny
+            "Partly cloudy" -> return R.drawable.sunny_partly_cloudy
+            "Mist" -> return R.drawable.misty_sunny
+        }
+    }
+    when(textCondition){
+        "Mist" -> return R.drawable.misty_night
+        "Partly cloudy" -> return R.drawable.moon_partly_cloudy
+        "Rain" -> return R.drawable.rain
+        "Sunny" -> return R.drawable.sunny
+        "Cloudy" -> return R.drawable.cloudy
+        "Clear" -> return R.drawable.moon
+        "Overcast" -> return R.drawable.cloudy
+        "Moderate snow" -> return R.drawable.snow
+        "Heavy snow" -> return R.drawable.snow
+        "Light snow" -> return R.drawable.snow
+        "Fog" -> return R.drawable.fog
+        "Light rain shower" -> return R.drawable.light_rain
+        "Patchy rain shower" -> return R.drawable.light_rain
+        "Moderate or heavy rain shower" -> return R.drawable.rain
+        "Thunder" -> return R.drawable.rain
+        "Torrential rain shower"-> return  R.drawable.rain
+
+    }
+    return R.drawable.cloudy
+}

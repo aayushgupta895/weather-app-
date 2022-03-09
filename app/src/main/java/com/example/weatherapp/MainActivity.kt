@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(){
     lateinit var humidity : TextView
     lateinit var wind : TextView
     lateinit var pressure : TextView
-
+    lateinit var current_weather : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity(){
         humidity = findViewById(R.id.humidity)
         wind = findViewById(R.id.wind)
         pressure = findViewById(R.id.pressure)
+        current_weather = findViewById(R.id.current_weather)
         val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
         mAdaper = RvAdapter(this)
@@ -109,7 +110,12 @@ class MainActivity : AppCompatActivity(){
                    //pressure
                    currentJsonObject.getString("pressure_mb")+"mBar",
                    //humidity
-                   currentJsonObject.getString("humidity")+"%")
+                   currentJsonObject.getString("humidity")+"%",
+                //isDay
+                   currentJsonObject.getString("is_day")
+                   //text_condition
+
+                   )
                val hour = it.getJSONObject("forecast").getJSONArray("forecastday").getJSONObject(0).getJSONArray("hour")
                val hourList = ArrayList<hour>()
                for ( i in 0 until hour.length()){
@@ -161,6 +167,7 @@ class MainActivity : AppCompatActivity(){
         wind.text = WD.wind
         pressure.text =  WD.pressure
 
+         current_weather.setImageResource(drawable(WD.condition,WD.isDay))
     }
 
 
