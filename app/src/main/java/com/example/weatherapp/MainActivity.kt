@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.*
 
 import androidx.appcompat.app.AppCompatActivity
@@ -63,17 +64,28 @@ class MainActivity : AppCompatActivity(){
         mAdaper = RvAdapter(this)
         recyclerView.adapter = mAdaper
         fetchData("delhi");
+        doSomething(editText)
+    }
+    private fun doSomething(search: EditText){
+        search.setOnEditorActionListener(TextView.OnEditorActionListener{ _, actionId, _ ->
 
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+
+                fetchData(search.text.toString());
+                return@OnEditorActionListener true
+            }
+            false
+        })
     }
 
-
      fun button(v: View){
-         progressBar.visibility = ProgressBar.VISIBLE
+
          Log.d("editText",editText.text.toString())
         fetchData(editText.text.toString())
  }
 
    fun fetchData(s : String){
+       progressBar.visibility = ProgressBar.VISIBLE
        val url =
            "https://api.weatherapi.com/v1/forecast.json?key=c1f2c15e9dc9483d9ad141048220802&q=$s&days=1&aqi=yes&alerts=yes"
        val jsonObjectRequest = JsonObjectRequest(
@@ -172,27 +184,6 @@ class MainActivity : AppCompatActivity(){
 
 
 
-//    private fun blurLayout() {
-//        val radius = 2f
-//
-//        val decorView: View = window.decorView
-//        //ViewGroup you want to start blur from. Choose root as close to BlurView in hierarchy as possible.
-//        //ViewGroup you want to start blur from. Choose root as close to BlurView in hierarchy as possible.
-//        //Set drawable to draw in the beginning of each blurred frame (Optional).
-//        //Can be used in case your layout has a lot of transparent space and your content
-//        //gets kinda lost after after blur is applied.
-//        //Set drawable to draw in the beginning of each blurred frame (Optional).
-//        //Can be used in case your layout has a lot of transparent space and your content
-//        //gets kinda lost after after blur is applied.
-//        val windowBackground: Drawable = decorView.getBackground()
-//
-//        blurView.setupWith(decorView.findViewById(android.R.id.content))
-//            .setFrameClearDrawable(windowBackground)
-//            .setBlurAlgorithm(RenderScriptBlur(this))
-//            .setBlurRadius(radius)
-//            .setBlurAutoUpdate(true)
-//            .setHasFixedTransformationMatrix(true)
-//    }
 
 
 }
