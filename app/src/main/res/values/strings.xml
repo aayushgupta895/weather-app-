@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">weatherApp</string>
+    <string name="textTitle">weather today</string>
+    <string name="textContent">chances of rain</string>
 </resources>
